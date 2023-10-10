@@ -1,0 +1,19 @@
+{
+  "name": "chat-application",
+  "version": "1.0.0",
+  "description": "Realtime chat application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funkyd3v/chat-application.git"
+  },
+  "author": "funkyd3v",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funkyd3v/chat-application/issues"
+  },
+  "homepage": "https://github.com/funkyd3v/chat-application#readme"
+}
