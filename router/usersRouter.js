@@ -9,11 +9,11 @@ const {
   addUserValidators,
   addUserValidationHandler
 } = require("../middlewares/users/userValidator");
-const {checkLogin, redirectLoggedIn} = require("../middlewares/common/checkLogin");
+const {checkLogin, redirectLoggedIn, requireRole} = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 
-router.get("/", decorateHtmlResponse("Users"), checkLogin, getUser);
+router.get("/", decorateHtmlResponse("Users"), checkLogin, requireRole(["admin"]), getUser);
 
 router.post(
   "/",

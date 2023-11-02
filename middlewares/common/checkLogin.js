@@ -1,3 +1,4 @@
+const createHttpError = require("http-errors");
 const jwt = require("jsonwebtoken");
 
 const checkLogin = (req, res, next) => {
@@ -50,7 +51,28 @@ const redirectLoggedIn = function (req, res, next) {
   }
 };
 
+function requireRole(role){
+  return function(req, res, next){
+    if (req.user.role && role.includes(req.user.role)) {
+      next();
+    } else {
+      if (res.locals.html) {
+        next(createHttpError(401, "You are unathorized"));
+      } else {
+        res.status(401).json({
+          errors: {
+            common: {
+              msg: "You are unathorized!"
+            }
+          }
+        });
+      }
+    }
+  }
+}
+
 module.exports = {
   checkLogin,
-  redirectLoggedIn
+  redirectLoggedIn,
+  requireRole
 };
